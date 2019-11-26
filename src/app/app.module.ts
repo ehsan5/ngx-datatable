@@ -71,6 +71,11 @@ import { SummaryRowSimpleComponent } from './summary/summary-row-simple.componen
 import { SummaryRowCustomTemplateComponent } from './summary/summary-row-custom-template.component';
 import { SummaryRowServerPagingComponent } from './summary/summary-row-server-paging.component';
 import { SummaryRowInlineHtmlComponent } from './summary/summary-row-inline-html.component';
+// -- Filter row
+import { FilterRowSimpleComponent } from './filter/filter-row-simple.component';
+import { FilterRowCustomTemplateComponent } from './filter/filter-row-custom-template.component';
+import { FilterRowServerPagingComponent } from './filter/filter-row-server-paging.component';
+import { FilterRowInlineHtmlComponent } from './filter/filter-row-inline-html.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CommonModule } from '@angular/common';
 
@@ -126,7 +131,13 @@ import { CommonModule } from '@angular/common';
     SummaryRowSimpleComponent,
     SummaryRowCustomTemplateComponent,
     SummaryRowServerPagingComponent,
-    SummaryRowInlineHtmlComponent
+    SummaryRowInlineHtmlComponent,
+
+    // add By Ehsan Amj
+    FilterRowSimpleComponent,
+    FilterRowCustomTemplateComponent,
+    FilterRowServerPagingComponent,
+    FilterRowInlineHtmlComponent
   ],
   imports: [
     CommonModule,

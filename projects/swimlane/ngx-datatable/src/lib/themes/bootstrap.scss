@@ -98,4 +98,12 @@ bootstrap table theme
       }
     }
   }
+  // Filter row styles
+  .datatable-filter-row {
+    .datatable-body-row {
+      .datatable-body-cell {
+        font-weight: bold;
+      }
+    }
+  }
 }

@@ -53,6 +53,9 @@
     [summaryRow]="summaryRow"
     [summaryHeight]="summaryHeight"
     [summaryPosition]="summaryPosition"
+    [filterRow]="filterRow"
+    [filterHeight]="filterHeight"
+    [filterPosition]="filterPosition"
     (page)="onBodyPage($event)"
     (activate)="activate.emit($event)"
     (rowContextmenu)="onRowContextmenu($event)"
@@ -63,6 +66,13 @@
   </datatable-body>
   <datatable-footer
     *ngIf="footerHeight"
+    [appUrl]="_appUrl"
+    [resource]="_resource"
+    [sortDir]="_sortDir"
+    [sortProp]="_sortProp"
+    [includes]="_includes"
+    [filters]="_filters"
+    [columns]="_columns"
     [rowCount]="rowCount"
     [pageSize]="pageSize"
     [offset]="offset"

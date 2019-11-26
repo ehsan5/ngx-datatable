@@ -1,15 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ColumnMode } from 'projects/swimlane/ngx-datatable/src/public-api';
 
 @Component({
-  selector: 'summary-row-inline-html',
+  selector: 'filter-row-custom-template-demo',
   template: `
     <div>
       <h3>
-        Inline HTML template
+        Filter Row with Custom Template
         <small>
           <a
-            href="https://github.com/swimlane/ngx-datatable/blob/master/src/app/summary/summary-row-inline-html.component.ts"
+            href="https://github.com/swimlane/ngx-datatable/blob/master/src/app/filter/filter-row-custom-template.component.ts"
           >
             Source
           </a>
@@ -17,22 +17,16 @@ import { ColumnMode } from 'projects/swimlane/ngx-datatable/src/public-api';
       </h3>
       <ngx-datatable
         class="material"
-        [summaryRow]="enableSummary"
-        [summaryPosition]="summaryPosition"
-        [summaryHeight]="100"
+        [filterRow]="true"
+        [columns]="columns"
         [columnMode]="ColumnMode.force"
         [headerHeight]="50"
-        rowHeight="auto"
+        [rowHeight]="'auto'"
+        [filterHeight]="55"
         [rows]="rows"
       >
-        <ngx-datatable-column prop="name" [summaryTemplate]="
-        
-
-"></ngx-datatable-column>
-        <ngx-datatable-column name="Gender" [summaryFunc]="summaryForGender"></ngx-datatable-column>
-        <ngx-datatable-column prop="age" [summaryFunc]="avgAge"></ngx-datatable-column>
       </ngx-datatable>
-      <ng-template #nameSummaryCell>
+      <ng-template #nameFilterCell let-row="row" let-value="value">
         <div class="name-container">
           <div class="chip" *ngFor="let name of getNames()">
             <span class="chip-content">{{ name }}</span>
@@ -40,13 +34,16 @@ import { ColumnMode } from 'projects/swimlane/ngx-datatable/src/public-api';
         </div>
       </ng-template>
     </div>
-  `
+  `,
+  styleUrls: ['./filter-row-custom-template.component.scss']
 })
-export class SummaryRowInlineHtmlComponent {
+export class FilterRowCustomTemplateComponent implements OnInit {
   rows = [];
 
-  enableSummary = true;
-  summaryPosition = 'top';
+  @ViewChild('nameFilterCell', { static: false })
+  nameFilterCell: TemplateRef<any>;
+
+  columns = [];
 
   ColumnMode = ColumnMode;
 
@@ -54,6 +51,18 @@ export class SummaryRowInlineHtmlComponent {
     this.fetch(data => {
       this.rows = data.splice(0, 5);
     });
+  }
+
+  ngOnInit() {
+    this.columns = [
+      {
+        prop: 'name',
+        filterFunc: () => null,
+        filterTemplate: this.nameFilterCell
+      },
+      { name: 'Gender', filterFunc: cells => this.filterForGender(cells) },
+      { prop: 'age', filterFunc: cells => this.avgAge(cells) }
+    ];
   }
 
   fetch(cb) {
@@ -71,14 +80,14 @@ export class SummaryRowInlineHtmlComponent {
     return this.rows.map(row => row.name).map(fullName => fullName.split(' ')[1]);
   }
 
-  summaryForGender(cells: string[]) {
+  private filterForGender(cells: string[]) {
     const males = cells.filter(cell => cell === 'male').length;
     const females = cells.filter(cell => cell === 'female').length;
 
     return `males: ${males}, females: ${females}`;
   }
 
-  avgAge(cells: number[]): number {
+  private avgAge(cells: number[]): number {
     const filteredCells = cells.filter(cell => !!cell);
     return filteredCells.reduce((sum, cell) => (sum += cell), 0) / filteredCells.length;
   }

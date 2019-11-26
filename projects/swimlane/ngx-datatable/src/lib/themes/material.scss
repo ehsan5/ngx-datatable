@@ -66,6 +66,10 @@ $datatable-pager-active-background: rgba(158, 158, 158, 0.2) !default;
 $datatable-summary-row-background: #ddd !default;
 $datatable-summary-row-background-hover: #ddd !default;
 
+// colors for filter row elements
+$datatable-filter-row-background: #ddd !default;
+$datatable-filter-row-background-hover: #ddd !default;
+
 .ngx-datatable.material {
   background: $ngx-datatable-background;
   box-shadow: $ngx-datatable-box-shadow;
@@ -398,6 +402,21 @@ $datatable-summary-row-background-hover: #ddd !default;
 
       &:hover {
         background-color: $datatable-summary-row-background-hover;
+      }
+
+      .datatable-body-cell {
+        font-weight: bold;
+      }
+    }
+  }
+
+  // Summary row styles
+  .datatable-filter-row {
+    .datatable-body-row {
+      background-color: $datatable-filter-row-background;
+
+      &:hover {
+        background-color: $datatable-filter-row-background-hover;
       }
 
       .datatable-body-cell {

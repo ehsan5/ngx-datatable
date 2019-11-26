@@ -17,6 +17,7 @@ export * from './lib/components/body/selection.component';
 export * from './lib/components/body/body-group-header.directive';
 export * from './lib/components/body/body-group-header-template.directive';
 export * from './lib/components/body/summary/summary-row.component';
+export * from './lib/components/body/filter/filter-row.component';
 export * from './lib/components/footer/footer.component';
 export * from './lib/components/footer/pager.component';
 export * from './lib/components/footer/footer.directive';

@@ -216,4 +216,18 @@ export interface TableColumn {
    * @memberOf TableColumn
    */
   summaryTemplate?: any;
+
+  /**
+   * filter function
+   *
+   * @memberOf TableColumn
+   */
+  filterFunc?: (cells: any[]) => any;
+
+  /**
+   * Filter cell template ref
+   *
+   * @memberOf TableColumn
+   */
+  filterTemplate?: any;
 }

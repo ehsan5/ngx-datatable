@@ -82,7 +82,7 @@ export function isNullOrUndefined<T>(value: T | null | undefined): value is null
 /**
  * Translates templates definitions to objects
  */
-export function translateTemplates(templates: DataTableColumnDirective[]): any[] {
+export function translateTemplates(templates: DataTableColumnDirective[]): any[] {console.log('templates is',templates);
   const result: any[] = [];
   for (const temp of templates) {
     const col: any = {};
@@ -106,6 +106,14 @@ export function translateTemplates(templates: DataTableColumnDirective[]): any[]
 
     if (temp.summaryTemplate) {
       col.summaryTemplate = temp.summaryTemplate;
+    }
+
+    if (temp.filterFunc) {
+      col.filterFunc = temp.filterFunc;
+    }
+
+    if (temp.filterTemplate) {
+      col.filterTemplate = temp.filterTemplate;
     }
 
     result.push(col);

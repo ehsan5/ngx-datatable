@@ -19,7 +19,7 @@
     "deploy-docs": "angular-cli-ghpages --dir ./dist/ngx-datatable",
     "publish": "npm publish dist/swimlane/ngx-datatable"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/animations": "~8.2.3",
     "@angular/common": "~8.2.3",
@@ -29,8 +29,11 @@
     "@angular/platform-browser": "~8.2.3",
     "@angular/platform-browser-dynamic": "~8.2.3",
     "@angular/router": "~8.2.3",
+    "karma-cli": "^2.0.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
+    "webpack": "^4.41.2",
+    "webpack-dev-server": "^3.9.0",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {

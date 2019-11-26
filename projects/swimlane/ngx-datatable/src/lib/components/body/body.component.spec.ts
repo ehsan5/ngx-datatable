@@ -6,6 +6,7 @@ import { DataTableRowWrapperComponent } from './body-row-wrapper.component';
 import { DataTableBodyCellComponent } from './body-cell.component';
 import { DataTableSelectionComponent } from './selection.component';
 import { DataTableSummaryRowComponent } from './summary/summary-row.component';
+import { DataTableFilterRowComponent } from './filter/filter-row.component';
 import { ProgressBarComponent } from './progress-bar.component';
 import { ScrollerComponent } from './scroller.component';
 import { ScrollbarHelper } from '../../services/scrollbar-helper.service';
@@ -25,6 +26,7 @@ describe('DataTableBodyComponent', () => {
         DataTableBodyCellComponent,
         DataTableSelectionComponent,
         DataTableSummaryRowComponent,
+        DataTableFilterRowComponent,
         ProgressBarComponent,
         ScrollerComponent
       ],
